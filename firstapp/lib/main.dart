@@ -1,5 +1,9 @@
-import 'package:firstapp/form.dart';
+import 'package:firstapp/page/form.dart';
+import 'package:firstapp/main.dart';
+import 'package:firstapp/page/to_do_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() {
   runApp(const MyApp());
@@ -29,8 +33,10 @@ class MyHomePage extends StatefulWidget {
     State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class _MyHomePageState extends State<MyHomePage> {
+
 Widget build(BuildContext context) {
-    return Scaffold(appBar: MyApp,
+    return Scaffold(
         appBar: AppBar(
             title: Text(widget.title),
         ),
@@ -59,9 +65,20 @@ Widget build(BuildContext context) {
                         );
                       },
                     ),
+                    ListTile(
+                        title: const Text('To Do'),
+                        onTap: () {
+                            // Route menu ke halaman to do
+                            Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ToDoPage()),
+                            );
+                        },
+                    ),
                 ],
             ),
         ),
         body: Center(),
     );
+}
 }

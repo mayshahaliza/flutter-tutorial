@@ -1,6 +1,9 @@
+import 'package:firstapp/page/form.dart';
 import 'package:firstapp/main.dart';
+import 'package:firstapp/page/to_do_page.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MyFormPage extends StatefulWidget {
     const MyFormPage({super.key});
@@ -40,7 +43,7 @@ class _MyFormPageState extends State<MyFormPage> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: Text(widget.title),
+                title: Text("Form"),
             ),
             // Menambahkan drawer menu
             drawer: Drawer(
@@ -64,6 +67,16 @@ class _MyFormPageState extends State<MyFormPage> {
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(builder: (context) => const MyFormPage()),
+                                );
+                            },
+                        ),
+                        ListTile(
+                            title: const Text('To Do'),
+                            onTap: () {
+                                // Route menu ke halaman to do
+                                Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const ToDoPage()),
                                 );
                             },
                         ),
